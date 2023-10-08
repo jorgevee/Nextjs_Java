@@ -72,4 +72,14 @@ public class AuthController {
 
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
     }
+
+    @GetMapping("/{email}")
+    public ResponseEntity<User> getUserByEmail(@PathVariable String email) {
+       try {
+              User user = authService.getUserByEmail(email);
+              return ResponseEntity.ok(user);
+         } catch (Exception e) {
+              return ResponseEntity.notFound().build();
+       }
+    }
 }
