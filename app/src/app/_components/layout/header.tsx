@@ -1,13 +1,11 @@
 import Link from "next/link";
-import { useSession, signOut } from "next-auth/react";
-import { useRouter } from "next/router";
+import { useSession } from "next-auth/react";
+import { SignOutAuth } from "./actions";
+import { redirect } from "next/navigation";
+import type { NextApiRequest, NextApiResponse } from "next";
 
-const Header = () => {
-  const { data: session } = useSession();
-
-  const handleSignout = () => {
-    signOut();
-  };
+function Header() {
+  const session = useSession();
 
   return (
     <header className="flex justify-between items-center py-4 px-6 bg-white border-b-4 border-indigo-600">
@@ -16,7 +14,7 @@ const Header = () => {
       </Link>
 
       <div className="flex items-center space-x-4">
-        {session ? (
+        {session?.data ? (
           <Link
             className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded"
             href="/dashboard"
@@ -39,10 +37,10 @@ const Header = () => {
             </Link>
           </>
         )}
-        {session && (
+        {session?.data && (
           <button
             className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded"
-            onClick={handleSignout}
+            onClick={SignOutAuth}
           >
             Sign out
           </button>
@@ -50,6 +48,6 @@ const Header = () => {
       </div>
     </header>
   );
-};
+}
 
 export default Header;

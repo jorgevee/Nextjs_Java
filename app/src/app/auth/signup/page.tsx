@@ -1,18 +1,16 @@
+"use client";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
+import { redirect } from "next/navigation";
 import { useSession, signIn } from "next-auth/react";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 import Link from "next/link";
 
 export default function SignUp() {
-  const router = useRouter();
   const { data: session } = useSession();
-  useEffect(() => {
-    if (session) {
-      router.push("/dashboard");
-    }
-  }, [session, router]);
+  if (session) {
+    redirect("/dashboard");
+  }
 
   const [formData, setFormData] = useState({
     username: "",
@@ -56,10 +54,9 @@ export default function SignUp() {
         username,
         email,
         password,
-        redirect: false,
       });
 
-      router.push("/dashboard");
+      redirect("/dashboard");
     } catch (error) {
       toast.error("Invalid credentials");
     }

@@ -1,53 +1,41 @@
-import Link from "next/link";
-import { useState } from "react";
-import { signIn } from "next-auth/react";
-import { useRouter } from "next/router";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-export default function SignIn() {
-  const router = useRouter();
-  const [formData, setFormData] = useState({
-    username: "",
-    email: "",
-    password: "",
-  });
+import { redirect } from "next/navigation";
+import { signIn } from "@/utils/auth";
+import { AuthError } from "next-auth";
+import { signInFun } from "./actions";
 
-  const { username, email, password } = formData;
+export default function SignInForm() {
+  // async function signInUser(username, email, password) {
+  //   "use server";
+  //   try {
+  //     const response = await fetch("/api/auth/signin", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({
+  //         username,
+  //         email,
+  //         password,
+  //       }),
+  //     });
 
-  const onChange = (e: any) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  async function handleSubmit(e: any) {
-    e.preventDefault();
-    try {
-      const res = await signIn("credentials", {
-        username,
-        email,
-        password,
-        redirect: false,
-      });
-      // console.log("res: ", res);
-
-      if (res?.error) {
-        console.log("error: ", res.error);
-        toast.error(res.error);
-      } else {
-        // toast.success("Signed in successfully");
-        router.push("/dashboard");
-      }
-    } catch (error) {
-      toast.error("Failed to sign in");
-      console.log(error);
-    }
-  }
+  //     if (response.ok) {
+  //       // Handle successful sign-in
+  //       console.log("Sign-in successful!");
+  //     } else {
+  //       // Handle sign-in failure
+  //       console.error("Sign-in failed.");
+  //     }
+  //   } catch (error) {
+  //     console.error("Error during sign-in:", error);
+  //   }
+  // }
   return (
     <div className="container mx-auto max-w-md">
       <h1 className="text-3xl font-bold text-gray-800">Sign In</h1>
-      <form className="mt-4" onSubmit={handleSubmit}>
+      <form className="mt-4" action={signInFun}>
         <div className="mb-4">
           <label
-            //make label look cooler
             className="block text-gray-700 text-sm font-bold mb-2"
             htmlFor="username"
           >
@@ -58,8 +46,6 @@ export default function SignIn() {
             type="text"
             name="username"
             placeholder="Username"
-            value={username}
-            onChange={onChange}
             required={true}
           />
           <label
@@ -74,9 +60,7 @@ export default function SignIn() {
             name="email"
             id="email"
             placeholder="Email"
-            value={email}
-            onChange={onChange}
-            // required={true}
+            required={true}
           />
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
@@ -90,8 +74,6 @@ export default function SignIn() {
             name="password"
             id="password"
             placeholder="Password"
-            value={password}
-            onChange={onChange}
           />
         </div>
         <button
@@ -100,7 +82,7 @@ export default function SignIn() {
         >
           Sign In
         </button>
-        <ToastContainer autoClose={3000} hideProgressBar />
+        {/* <ToastContainer autoClose={3000} hideProgressBar /> */}
       </form>
     </div>
   );

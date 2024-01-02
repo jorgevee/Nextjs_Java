@@ -20,13 +20,13 @@ export default function Hero() {
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4 sm:justify-start">
             <Link
-              className="block w-full rounded-md border border-blue-600 bg-blue-600 px-6 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50 sm:w-auto transition duration-300 ease-in-out"
+              className="block w-full rounded-md border border-blue-600 bg-blue-600 px-6 py-3 text-sm font-medium text-white hover:bg-blue-700 hover:text-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50 sm:w-auto transition duration-300 ease-in-out"
               href="/auth"
             >
               Get Started
             </Link>
             <Link
-              className="block w-full rounded-md border border-blue-600 px-6 py-3 text-sm font-medium text-blue-600 hover:bg-blue-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50 sm:w-auto transition duration-300 ease-in-out"
+              className="block w-full rounded-md border border-blue-600 px-6 py-3 text-sm font-medium text-blue-600 hover:bg-gray-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50 sm:w-auto transition duration-300 ease-in-out"
               href="/about"
             >
               Learn More

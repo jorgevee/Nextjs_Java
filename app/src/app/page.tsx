@@ -3,7 +3,13 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import Hero from "@/components/Hero";
-import Services from "@/components/home/serviceMain";
+import Services from "@/app/_components/home/serviceMain";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "NerxtJS + Java",
+  description: "A Next and Java Spring Project",
+};
 
 const inter = Inter({ subsets: ["latin"] });
 

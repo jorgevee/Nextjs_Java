@@ -1,5 +1,3 @@
-import jwt from "jsonwebtoken";
-
 export default async function apiAuthProvider(credentials) {
   try {
     const response = await fetch(`${process.env.BACKEND_API}/api/auth/signin`, {
