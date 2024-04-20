@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
-import com.bezkoder.springjwt.srevice.AuthService;
+import com.bezkoder.springjwt.service.AuthService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.password.PasswordEncoder;
