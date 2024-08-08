@@ -66,7 +66,6 @@ public class AuthController {
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
         authService.validateSignupRequest(signUpRequest);
-
         User user = authService.createNewUser(signUpRequest);
         userRepository.save(user);
 

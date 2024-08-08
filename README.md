@@ -1,6 +1,6 @@
-# My Webapp
+# Nextjs and Java Spring Boot App
 
-My Webapp is a full-stack web application built with Next.js for the client-side and Java Spring Boot and Spring Security for the server-side. The application is designed to provide users with an easy and secure way to manage their data.
+A full-stack web application built with Next.js for the client-side and Java Spring Boot and Spring Security for the server-side. The application is designed to provide users with an easy and secure way to manage their data.
 
 ## Installation
 

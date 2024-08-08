@@ -5,7 +5,6 @@ import type { NextFetchEvent, NextRequest } from "next/server";
 export function middleware(req: NextRequest, event: NextFetchEvent) {
   try {
     const token = req.cookies.get("next-auth.session-token");
-
     if (!token?.value) {
       // Authentication failed
       return NextResponse.redirect(new URL("/auth/login", req.url)); // Redirect to login

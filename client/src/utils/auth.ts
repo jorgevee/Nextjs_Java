@@ -4,7 +4,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import apiAuthSignIn from "./api";
 import { JWT } from "next-auth/jwt";
 
-export const authOptions:NextAuthOptions = {
+export const authOptions: NextAuthOptions = {
   providers: [
     GitHubProvider({
       clientId: process.env.GITHUB_ID as string,
@@ -13,11 +13,15 @@ export const authOptions:NextAuthOptions = {
     CredentialsProvider({
       name: "Credentials",
       credentials: {
-        username: { label: "Username", type: "text"},
+        username: { label: "Username", type: "text" },
         email: { label: "Email", type: "email" },
         password: { label: "Password", type: "password" },
       },
-      async authorize(credentials: Record<"email" | "username" | "password", string> | undefined) {
+      async authorize(
+        credentials:
+          | Record<"email" | "username" | "password", string>
+          | undefined
+      ) {
         if (!credentials) {
           throw new Error("Invalid credentials");
         }
